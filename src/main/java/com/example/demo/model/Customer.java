@@ -37,7 +37,7 @@ public class Customer {
 
     @DecimalMin(value = "0.0", message = "Discount rate cannot be negative")
     @DecimalMax(value = "1.0", message = "Discount rate cannot exceed 100%")
-    @Column(name = "discount_rate", precision = 3, scale = 2)
+    @Column(name = "discount_rate")
     private Double discountRate; // Процент скидки (0.1 = 10%)
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)

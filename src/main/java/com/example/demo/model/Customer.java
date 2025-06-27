@@ -24,20 +24,17 @@ public class Customer {
     @Pattern(regexp = "^\\+?[0-9\\-\\s]+$", message = "Invalid phone number")
     private String phone;
 
-    @NotBlank(message = "Address is required")
-    private String address;
-
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     @Column(unique = true)
     private String email;
 
-    @Column(name = "discount_card")
+    @Column(name = "discoun_card")
     private String discountCard; // Номер карты лояльности
 
     @DecimalMin(value = "0.0", message = "Discount rate cannot be negative")
     @DecimalMax(value = "1.0", message = "Discount rate cannot exceed 100%")
-    @Column(name = "discount_rate")
+    @Column(name = "discoun_rate")
     private Double discountRate; // Процент скидки (0.1 = 10%)
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)

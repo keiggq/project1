@@ -1,11 +1,23 @@
 package com.example.demo.exception;
 
-/**
- * Исключение, выбрасываемое при отсутствии запрашиваемой сущности в базе данных.
- * Соответствует HTTP статусу 404 Not Found.
- */
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
 public class EntityNotFoundException extends RuntimeException {
-    public EntityNotFoundException(String message) {
-        super(message);
+    public EntityNotFoundException() {
+        super("Entity not found");
+    }
+
+    public EntityNotFoundException(String entityName) {
+        super(entityName + " not found");
+    }
+
+    public EntityNotFoundException(String entityName, Long id) {
+        super(entityName + " with ID " + id + " not found");
+    }
+
+    public EntityNotFoundException(String entityName, String identifier) {
+        super(entityName + " with identifier '" + identifier + "' not found");
     }
 }
